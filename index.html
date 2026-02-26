@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Naren Food Industries – Pure. Homemade. Traditional.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&family=Cormorant:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green:        #2a6b35;
+  --green-mid:    #3a8c49;
+  --green-light:  #5aac6a;
+  --green-pale:   #edf6ef;
+  --cream:        #faf7f2;
+  --warm:         #f4ede2;
+  --warm-deep:    #e8d8c4;
+  --gold:         #c8961e;
+  --dark:         #161b14;
+  --dark-2:       #1e2619;
+  --text:         #242822;
+  --muted:        #7a7e76;
+  --border:       rgba(0,0,0,0.08);
+  --white:        #ffffff;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
+  --font-italic:  'Cormorant', Georgia, serif;
+  --ease:         cubic-bezier(0.16,1,0.3,1);
+  --shadow-sm:    0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md:    0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg:    0 24px 64px rgba(0,0,0,0.14);
+  --shadow-green: 0 16px 48px rgba(42,107,53,0.28);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font-body);border:none;cursor:pointer}
+body{cursor:none}
+#cursor{width:10px;height:10px;background:var(--green);border-radius:50%;position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);transition:transform .12s var(--ease),background .2s;mix-blend-mode:multiply}
+#cursor-ring{width:38px;height:38px;border:1.5px solid var(--green);border-radius:50%;position:fixed;z-index:9998;pointer-events:none;transform:translate(-50%,-50%);opacity:.5}
+@media(hover:none){#cursor,#cursor-ring{display:none}body,button,a{cursor:auto}}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--green-light);border-radius:10px}
+
+/* NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 6%;display:flex;align-items:center;justify-content:space-between;transition:all .5s var(--ease)}
+#navbar.scrolled{background:rgba(250,247,242,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:14px 6%;box-shadow:0 1px 0 var(--border),var(--shadow-sm)}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-mark{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.3);flex-shrink:0}
+.nav-logo-mark img{height:100%}
+.nav-brand-name{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--white);transition:color .4s;line-height:1.2}
+.nav-brand-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .4s}
+#navbar.scrolled .nav-brand-name{color:var(--dark)}
+#navbar.scrolled .nav-brand-tag{color:var(--muted)}
+.nav-links{display:flex;list-style:none;gap:36px}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:.4px;color:rgba(255,255,255,.85);position:relative;transition:color .3s}
+#navbar.scrolled .nav-links a{color:var(--text)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--green-light);transition:width .35s var(--ease)}
+.nav-links a:hover::after{width:100%}
+#navbar.scrolled .nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--green);color:var(--white);padding:10px 26px;border-radius:40px;font-size:13px;font-weight:600;letter-spacing:.5px;transition:all .3s var(--ease);border:1.5px solid var(--green)}
+.nav-cta:hover{background:var(--green-mid);transform:translateY(-1px);box-shadow:var(--shadow-green)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.nav-hamburger span{display:block;width:24px;height:1.5px;background:var(--white);transition:all .3s}
+#navbar.scrolled .nav-hamburger span{background:var(--dark)}
+#mobile-nav{display:none;position:fixed;inset:0;z-index:300;background:var(--dark-2);flex-direction:column;align-items:center;justify-content:center;gap:32px}
+#mobile-nav.open{display:flex}
+#mobile-nav a{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--white);opacity:.7;transition:all .3s}
+#mobile-nav a:hover{opacity:1;color:var(--green-light)}
+#mnav-close{position:absolute;top:24px;right:6%;background:none;border:none;color:var(--white);font-size:28px;line-height:1}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{height:100%;object-position:center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(108deg,rgba(14,22,12,.85) 0%,rgba(14,22,12,.58) 46%,rgba(14,22,12,.12) 100%)}
+.hero-inner{position:relative;z-index:2;padding:0 8%;max-width:760px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:40px;padding:7px 18px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:28px;animation:fadeUp 1s var(--ease) both}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--green-light);flex-shrink:0;box-shadow:0 0 0 3px rgba(90,172,106,.3);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(90,172,106,.3)}50%{box-shadow:0 0 0 7px rgba(90,172,106,0)}}
+.hero h1{font-family:var(--font-display);font-size:clamp(46px,6.5vw,88px);font-weight:900;line-height:1.02;color:var(--white);letter-spacing:-1px;animation:fadeUp 1s .1s var(--ease) both}
+.hero h1 em{font-style:italic;color:var(--green-light);display:block}
+.hero-sub{font-size:clamp(14px,1.4vw,17px);color:rgba(255,255,255,.62);line-height:1.85;max-width:460px;margin-top:22px;font-weight:300;animation:fadeUp 1s .2s var(--ease) both}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px;animation:fadeUp 1s .3s var(--ease) both}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--white);padding:14px 34px;border-radius:50px;font-size:14px;font-weight:600;letter-spacing:.4px;transition:all .35s var(--ease);border:1.5px solid var(--green)}
+.btn-primary:hover{background:var(--green-mid);transform:translateY(-3px);box-shadow:var(--shadow-green)}
+.btn-ghost{display:inline-flex;align-items:center;color:var(--white);padding:14px 28px;border-radius:50px;font-size:14px;font-weight:500;border:1.5px solid rgba(255,255,255,.3);transition:all .35s var(--ease)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:0;margin-top:54px;animation:fadeUp 1s .4s var(--ease) both;flex-wrap:wrap}
+.hero-stat{padding:0 28px;border-right:1px solid rgba(255,255,255,.15)}
+.hero-stat:first-child{padding-left:0}
+.hero-stat:last-child{border-right:none}
+.hero-stat strong{font-family:var(--font-display);font-size:36px;font-weight:900;color:var(--white);display:block;line-height:1}
+.hero-stat span{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:5px;display:block}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:10px;letter-spacing:2px;text-transform:uppercase;animation:fadeUp 1s .6s var(--ease) both}
+.hero-scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollAnim 2s ease-in-out infinite}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--green);padding:13px 0;overflow:hidden}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite}
+.marquee-item{display:inline-flex;align-items:center;gap:14px;color:rgba(255,255,255,.9);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:0 28px}
+.marquee-item::after{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.35);flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:100px 8%}
+.sec-label{display:inline-flex;align-items:center;gap:12px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+.sec-label::before{content:'';width:32px;height:1.5px;background:var(--green);flex-shrink:0}
+.sec-label.light{color:rgba(255,255,255,.55)}
+.sec-label.light::before{background:rgba(255,255,255,.35)}
+h2.display{font-family:var(--font-display);font-size:clamp(32px,4vw,54px);font-weight:900;line-height:1.08;color:var(--dark)}
+h2.display em{font-style:italic;color:var(--green)}
+h2.display.light{color:var(--white)}
+h2.display.light em{color:var(--green-light)}
+
+/* ABOUT */
+.about-section{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-images{position:relative;height:580px}
+.about-img-main{position:absolute;top:0;left:0;width:72%;height:420px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-img-accent{position:absolute;bottom:0;right:0;width:56%;height:300px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);border:6px solid var(--white)}
+.about-badge{position:absolute;top:42%;left:58%;background:var(--green);color:var(--white);border-radius:18px;padding:18px 22px;z-index:3;box-shadow:var(--shadow-green);text-align:center;border:3px solid var(--white)}
+.about-badge-num{font-family:var(--font-display);font-size:34px;font-weight:900;line-height:1.1}
+.about-badge-text{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;opacity:.8;margin-top:4px}
+.about-content p{color:var(--muted);line-height:1.9;font-size:15px;margin-top:18px;font-weight:300}
+.about-vals{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+.about-val{background:var(--cream);border-radius:16px;padding:20px;border-left:3px solid var(--green);transition:transform .3s var(--ease),box-shadow .3s}
+.about-val:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.about-val-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:5px}
+.about-val-desc{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* PRODUCTS */
+.products-section{background:var(--dark)}
+.products-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:50px;gap:24px;flex-wrap:wrap}
+.products-head-sub{color:rgba(255,255,255,.38);font-size:14px;font-weight:300;max-width:380px;line-height:1.7;margin-top:14px}
+.tab-group{display:flex;gap:8px;flex-wrap:wrap}
+.tab-btn{padding:9px 22px;border-radius:40px;font-size:12px;font-weight:600;letter-spacing:.5px;border:1.5px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);background:transparent;transition:all .3s var(--ease)}
+.tab-btn.active,.tab-btn:hover{background:var(--green);color:var(--white);border-color:var(--green)}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;overflow:hidden;transition:all .4s var(--ease);position:relative}
+.product-card:hover{transform:translateY(-10px);background:rgba(255,255,255,.07);border-color:rgba(90,172,106,.25);box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.product-img{height:180px;overflow:hidden;position:relative}
+.product-img img{height:100%;transition:transform .6s var(--ease)}
+.product-card:hover .product-img img{transform:scale(1.08)}
+.product-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 60%)}
+.product-pill{position:absolute;top:12px;left:12px;background:var(--green);color:var(--white);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.product-body{padding:18px 18px 20px}
+.product-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-light);margin-bottom:7px}
+.product-name{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:8px}
+.product-desc{font-size:12px;color:rgba(255,255,255,.4);line-height:1.75;font-weight:300}
+.product-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07)}
+.product-stars{color:var(--gold);font-size:11px;letter-spacing:1px}
+.product-order-btn{background:transparent;color:var(--green-light);border:1px solid rgba(90,172,106,.35);font-size:11px;font-weight:600;padding:6px 15px;border-radius:20px;transition:all .3s}
+.product-order-btn:hover{background:var(--green);color:var(--white);border-color:var(--green)}
+
+/* CATEGORIES */
+.categories-section{background:var(--warm);padding:90px 8%}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:16px;margin-top:50px}
+.cat-card{border-radius:20px;overflow:hidden;position:relative;transition:transform .4s var(--ease),box-shadow .4s;box-shadow:var(--shadow-sm)}
+.cat-card:hover{transform:scale(1.025);box-shadow:var(--shadow-lg)}
+.cat-card:nth-child(1){grid-column:span 2;height:280px}
+.cat-card:nth-child(2){height:280px}
+.cat-card:nth-child(3){height:280px}
+.cat-card:nth-child(4){height:220px}
+.cat-card:nth-child(5){height:220px}
+.cat-card:nth-child(6){grid-column:span 2;height:220px}
+.cat-card img{height:100%;transition:transform .6s var(--ease)}
+.cat-card:hover img{transform:scale(1.06)}
+.cat-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.62) 100%)}
+.cat-label{position:absolute;bottom:0;left:0;right:0;padding:24px 22px 20px}
+.cat-label strong{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--white);display:block}
+.cat-label span{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:.5px}
+
+/* WHY US */
+.why-section{background:var(--cream)}
+.why-intro{text-align:center;max-width:560px;margin:0 auto 64px}
+.why-intro p{color:var(--muted);font-size:15px;line-height:1.8;margin-top:14px;font-weight:300}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{background:var(--white);border-radius:24px;padding:36px 32px;border:1px solid var(--border);transition:all .4s var(--ease);position:relative;overflow:hidden}
+.why-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--green);transform:scaleX(0);transition:transform .4s var(--ease);transform-origin:left}
+.why-card:hover::after{transform:scaleX(1)}
+.why-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.why-icon-wrap{width:56px;height:56px;border-radius:16px;background:var(--green-pale);margin-bottom:22px;overflow:hidden}
+.why-icon-wrap img{height:100%;object-position:center}
+.why-num{font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--green);letter-spacing:1px;margin-bottom:10px}
+.why-title{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px}
+.why-desc{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300}
+
+/* FEATURE BANNER */
+.feature-banner{position:relative;height:480px;overflow:hidden;display:flex;align-items:center}
+.feature-banner-bg{position:absolute;inset:0}
+.feature-banner-bg img{height:100%}
+.feature-banner-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,22,12,.9) 0%,rgba(14,22,12,.48) 60%,transparent 100%)}
+.feature-banner-inner{position:relative;z-index:2;padding:0 8%;max-width:620px}
+.feature-banner h2{font-family:var(--font-display);font-size:clamp(32px,4vw,50px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:18px}
+.feature-banner h2 em{font-style:italic;color:var(--green-light)}
+.feature-banner p{color:rgba(255,255,255,.58);font-size:15px;line-height:1.8;margin-bottom:30px;font-weight:300}
+
+/* TESTIMONIALS */
+.testi-section{background:var(--dark-2)}
+.testi-head{text-align:center;margin-bottom:56px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:30px;transition:all .4s var(--ease)}
+.testi-card:hover{background:rgba(255,255,255,.07);transform:translateY(-6px);border-color:rgba(90,172,106,.25)}
+.testi-stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:16px}
+.testi-quote{font-family:var(--font-italic);font-size:17px;font-style:italic;color:rgba(255,255,255,.78);line-height:1.75}
+.testi-author{display:flex;align-items:center;gap:14px;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}
+.testi-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.testi-avatar img{height:100%;object-position:center top}
+.testi-name{font-size:14px;font-weight:600;color:var(--white)}
+.testi-location{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px}
+
+/* CONTACT */
+.contact-section{background:var(--cream)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-lede p{color:var(--muted);font-size:15px;line-height:1.9;margin-top:18px;font-weight:300}
+.contact-cards{display:flex;flex-direction:column;gap:14px;margin-top:36px}
+.contact-card{display:flex;align-items:center;gap:16px;background:var(--white);padding:20px 22px;border-radius:16px;border:1px solid var(--border);transition:all .3s var(--ease)}
+.contact-card:hover{transform:translateX(6px);box-shadow:var(--shadow-md);border-color:rgba(42,107,53,.2)}
+.contact-card-icon{width:48px;height:48px;border-radius:14px;background:var(--green-pale);overflow:hidden;flex-shrink:0}
+.contact-card-icon img{height:100%}
+.contact-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.contact-card-val{font-size:15px;font-weight:600;color:var(--dark)}
+.contact-form{background:var(--white);border-radius:28px;padding:44px;border:1px solid var(--border);box-shadow:var(--shadow-md)}
+.contact-form h3{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--dark);margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid #e8e3db;border-radius:12px;font-size:14px;font-family:var(--font-body);color:var(--dark);background:var(--cream);outline:none;transition:border .3s}
+.form-group textarea{height:110px;resize:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green)}
+.form-group select{appearance:none}
+.form-submit{width:100%;background:var(--green);color:var(--white);padding:15px;border-radius:14px;font-size:14px;font-weight:700;letter-spacing:.5px;transition:all .35s var(--ease);font-family:var(--font-body);margin-top:4px}
+.form-submit:hover{background:var(--green-mid);transform:translateY(-2px);box-shadow:var(--shadow-green)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:72px 8% 32px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px}
+.footer-logo-img{width:52px;height:52px;border-radius:50%;overflow:hidden;margin-bottom:16px}
+.footer-logo-img img{height:100%}
+.footer-brand-n{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--white);line-height:1.2}
+.footer-brand-s{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px}
+.footer-about{color:rgba(255,255,255,.35);font-size:13px;line-height:1.85;margin-top:16px;font-weight:300;max-width:280px}
+.footer-socials{display:flex;gap:10px;margin-top:22px}
+.footer-social{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:all .3s;overflow:hidden;text-decoration:none}
+.footer-social:hover{background:var(--green);border-color:var(--green)}
+.footer-social img{width:16px;height:16px;object-fit:contain;filter:invert(1);opacity:.65}
+.footer-social:hover img{opacity:1}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:20px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:11px}
+.footer-col ul a{color:rgba(255,255,255,.35);font-size:13px;transition:color .3s;font-weight:300}
+.footer-col ul a:hover{color:var(--green-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{color:rgba(255,255,255,.25);font-size:12px}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.stagger .reveal:nth-child(1){transition-delay:0s}
+.stagger .reveal:nth-child(2){transition-delay:.08s}
+.stagger .reveal:nth-child(3){transition-delay:.16s}
+.stagger .reveal:nth-child(4){transition-delay:.24s}
+.stagger .reveal:nth-child(5){transition-delay:.32s}
+.stagger .reveal:nth-child(6){transition-delay:.40s}
+.stagger .reveal:nth-child(7){transition-delay:.48s}
+.stagger .reveal:nth-child(8){transition-delay:.56s}
+.stagger .reveal:nth-child(9){transition-delay:.64s}
+.stagger .reveal:nth-child(10){transition-delay:.72s}
+.stagger .reveal:nth-child(11){transition-delay:.80s}
+.stagger .reveal:nth-child(12){transition-delay:.88s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .products-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px}
+}
+
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  #navbar{padding:16px 5%}
+  #navbar.scrolled{padding:12px 5%}
+
+  /* About — clean single image with badge overlay */
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-images{position:relative;height:auto;display:block;padding-bottom:0}
+  .about-img-main{position:relative;width:100%;height:300px;border-radius:20px;box-shadow:var(--shadow-lg)}
+  .about-img-accent{display:none}
+  .about-badge{position:absolute;bottom:-24px;right:20px;left:auto;top:auto;transform:none;margin:0;width:fit-content;z-index:3;padding:16px 22px;border-radius:16px;border:4px solid var(--white)}
+
+  /* Products */
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .products-head{flex-direction:column;align-items:flex-start}
+  .tab-group{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .tab-btn{flex-shrink:0}
+
+  /* Why */
+  .why-grid{grid-template-columns:1fr 1fr}
+
+  /* Categories */
+  .cat-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .cat-card:nth-child(1),.cat-card:nth-child(6){grid-column:span 1}
+  .cat-card:nth-child(1){height:220px}
+
+  /* Testimonials */
+  .testi-grid{grid-template-columns:1fr}
+
+  /* Contact */
+  .contact-wrap{grid-template-columns:1fr;gap:40px}
+
+  /* Feature Banner */
+  .feature-banner{height:auto;min-height:380px}
+  .feature-banner-inner{max-width:100%}
+
+  /* Footer */
+  .footer-bottom{flex-direction:column;text-align:center;gap:6px}
+
+  section{padding:72px 6%}
+  .categories-section{padding:72px 6%}
+}
+
+@media(max-width:600px){
+  section,.categories-section{padding:52px 5%}
+
+  /* Nav */
+  #navbar{padding:14px 4%}
+  #navbar.scrolled{padding:10px 4%}
+  .nav-logo-mark{width:34px;height:34px}
+  .nav-brand-name{font-size:13px}
+  .nav-brand-tag{font-size:8px;letter-spacing:1.5px}
+
+  /* Hero */
+  .hero{min-height:auto;padding:120px 0 60px}
+  .hero-inner{padding:0 5%}
+  .hero h1{font-size:clamp(32px,8vw,42px)}
+  .hero-sub{font-size:14px;margin-top:16px}
+  .hero-actions{flex-direction:column;gap:10px;margin-top:28px}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;padding:13px 24px}
+  .hero-stats{flex-direction:column;gap:14px;margin-top:36px}
+  .hero-stat{padding:0;border-right:none;display:flex;align-items:center;gap:10px}
+  .hero-stat strong{font-size:28px;display:inline}
+  .hero-stat span{margin-top:0;display:inline}
+  .hero-scroll{display:none}
+  .hero-eyebrow{font-size:10px;padding:6px 14px;margin-bottom:20px}
+
+  /* About — clean single image with badge */
+  .about-grid{gap:28px}
+  .about-img-main{height:240px;border-radius:18px}
+  .about-badge{bottom:-20px;right:16px;padding:14px 18px;border-radius:14px;border-width:3px}
+  .about-badge-num{font-size:24px}
+  .about-badge-text{font-size:8px}
+  .about-vals{grid-template-columns:1fr;gap:10px}
+  .about-val{padding:16px}
+  h2.display{font-size:clamp(26px,6vw,36px)}
+
+  /* Products */
+  .products-grid{grid-template-columns:1fr;gap:14px}
+  .product-img{height:200px}
+  .product-body{padding:14px 14px 16px}
+  .product-name{font-size:16px}
+  .product-desc{font-size:12px}
+  .products-head-sub{font-size:13px}
+
+  /* Categories */
+  .cat-grid{grid-template-columns:1fr;gap:12px}
+  .cat-card:nth-child(1),.cat-card:nth-child(2),.cat-card:nth-child(3),.cat-card:nth-child(4),.cat-card:nth-child(5),.cat-card:nth-child(6){height:180px;grid-column:span 1}
+
+  /* Why Us */
+  .why-grid{grid-template-columns:1fr;gap:14px}
+  .why-card{padding:28px 24px}
+  .why-intro{margin-bottom:40px}
+
+  /* Feature Banner */
+  .feature-banner{height:auto;min-height:auto;padding:60px 0}
+  .feature-banner-inner{padding:0 5%;max-width:100%}
+  .feature-banner h2{font-size:clamp(24px,6vw,36px)}
+  .feature-banner p{font-size:14px}
+  .feature-banner-bg::after{background:linear-gradient(180deg,rgba(14,22,12,.7) 0%,rgba(14,22,12,.92) 100%)}
+
+  /* Testimonials */
+  .testi-card{padding:22px 18px}
+  .testi-quote{font-size:15px}
+  .testi-author{gap:10px}
+  .testi-avatar{width:38px;height:38px}
+
+  /* Contact */
+  .form-row{grid-template-columns:1fr}
+  .contact-form{padding:24px 18px;border-radius:20px}
+  .contact-form h3{font-size:22px;margin-bottom:22px}
+  .contact-card{padding:16px}
+  .contact-card-icon{width:42px;height:42px;border-radius:12px}
+  .contact-card-val{font-size:14px}
+
+  /* Footer */
+  .footer-top{grid-template-columns:1fr;gap:32px;margin-bottom:36px}
+  .footer-about{max-width:100%}
+  .footer-bottom{flex-direction:column;text-align:center;gap:4px}
+  .footer-bottom p{font-size:11px}
+
+  /* Mobile nav adjustments */
+  #mobile-nav a{font-size:26px}
+  #mobile-nav{gap:24px}
+}
+
+/* Extra small screens (below 380px) */
+@media(max-width:380px){
+  .hero h1{font-size:28px}
+  .hero-inner{padding:0 4%}
+  .hero-eyebrow{font-size:9px;padding:5px 12px;gap:8px}
+  .nav-brand-name{font-size:12px}
+  .nav-brand-tag{font-size:7px}
+  .product-card{border-radius:14px}
+  .about-img-main{height:200px;border-radius:14px}
+  .about-badge{bottom:-18px;right:12px;padding:10px 14px;border-radius:12px;border-width:3px}
+  .about-badge-num{font-size:20px}
+  .about-badge-text{font-size:7px}
+  .about-val-title{font-size:13px}
+  .about-val-desc{font-size:11px}
+  h2.display{font-size:24px}
+  .sec-label{font-size:9px;letter-spacing:2px}
+  .contact-form{padding:20px 14px}
+  .form-group input,.form-group select,.form-group textarea{padding:11px 13px;font-size:13px}
+  .cat-card:nth-child(1),.cat-card:nth-child(2),.cat-card:nth-child(3),.cat-card:nth-child(4),.cat-card:nth-child(5),.cat-card:nth-child(6){height:160px}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+  <button id="mnav-close">&#x2715;</button>
+  <a href="#about">About</a>
+  <a href="#products">Products</a>
+  <a href="#why">Why Us</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" style="font-size:18px;padding:12px 32px;background:var(--green);border-radius:40px;opacity:1!important;color:#fff">Order Now</a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <img src="/logo.png" alt="Logo" loading="eager">
+    </div>
+    <div>
+      <div class="nav-brand-name">My Naren Food Industries</div>
+      <div class="nav-brand-tag">Pure &middot; Homemade &middot; Traditional</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Order Now</button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="https://blog.mountainroseherbs.com/hs-fs/hubfs/Blog%20images/DIY%20Herbal%20Powders_Overhead.jpg?width=900&height=600&name=DIY%20Herbal%20Powders_Overhead.jpg" alt="Traditional Indian food spread" loading="eager">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      100% Natural &amp; Preservative-Free
+    </div>
+    <h1>
+      From Our Heart
+      <em>to Your Table.</em>
+    </h1>
+    <p class="hero-sub">Authentic Indian flavours crafted with whole grains, natural sweeteners, and time-honoured recipes. No shortcuts — just pure, homemade goodness delivered across India and beyond.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#contact" class="btn-ghost">Place an Order</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>50+</strong><span>Products</span></div>
+      <div class="hero-stat"><strong>5,000+</strong><span>Happy Customers</span></div>
+      <div class="hero-stat"><strong>PAN India</strong><span>Delivery</span></div>
+      <div class="hero-stat"><strong>Zero</strong><span>Preservatives</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Multi-Millet Noodles</span>
+    <span class="marquee-item">Curry Leaves Rice Mix</span>
+    <span class="marquee-item">Peanut Chikki</span>
+    <span class="marquee-item">Ellu Mittai</span>
+    <span class="marquee-item">Nendran Banana Powder</span>
+    <span class="marquee-item">Ginger Chikki</span>
+    <span class="marquee-item">Mudakathan Rice Mix</span>
+    <span class="marquee-item">Pirandai Rice Mix</span>
+    <span class="marquee-item">Peanut Soanpapdi</span>
+    <span class="marquee-item">Combo Gift Packs</span>
+    <span class="marquee-item">Ragi Malt Mix</span>
+    <span class="marquee-item">Mixed Seeds Laddu</span>
+    <span class="marquee-item">Multi-Millet Noodles</span>
+    <span class="marquee-item">Curry Leaves Rice Mix</span>
+    <span class="marquee-item">Peanut Chikki</span>
+    <span class="marquee-item">Ellu Mittai</span>
+    <span class="marquee-item">Nendran Banana Powder</span>
+    <span class="marquee-item">Ginger Chikki</span>
+    <span class="marquee-item">Mudakathan Rice Mix</span>
+    <span class="marquee-item">Pirandai Rice Mix</span>
+    <span class="marquee-item">Peanut Soanpapdi</span>
+    <span class="marquee-item">Combo Gift Packs</span>
+    <span class="marquee-item">Ragi Malt Mix</span>
+    <span class="marquee-item">Mixed Seeds Laddu</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-images reveal-left">
+      <div class="about-img-main">
+        <img src="https://ayurvationhealthcare.com/wp-content/uploads/2024/05/12-1024x1024.jpg" alt="Traditional Indian cooking">
+      </div>
+      <div class="about-img-accent">
+        <img src="https://img.freepik.com/free-photo/bowls-crushes-herb-leaves-powder-tea_23-2148791476.jpg?semt=ais_user_personalization&w=740&q=80" alt="Traditional Indian cooking">
+
+    </div>
+      <div class="about-badge">
+        <div class="about-badge-num">Since<br>2015</div>
+        <div class="about-badge-text">Crafting Goodness</div>
+      </div>
+    </div>
+    <div class="about-content reveal-right">
+      <div class="sec-label">Our Story</div>
+      <h2 class="display">Born from <em>Tradition</em>,<br>Rooted in Nature</h2>
+      <p>My Naren Food Industries was born from a simple belief — the best food is made with love, natural ingredients, and time-tested recipes passed down through generations. We bring authentic South Indian culinary heritage to your home with absolutely zero compromise on quality or purity.</p>
+      <p>From the farms of Tamil Nadu to kitchens across India and the world, every product we make carries the warmth of a home-cooked meal and the trust of thousands of returning customers.</p>
+      <div class="about-vals">
+        <div class="about-val">
+          <div class="about-val-title">Zero Additives</div>
+          <div class="about-val-desc">No artificial colours, flavours or preservatives — ever.</div>
+        </div>
+        <div class="about-val">
+          <div class="about-val-title">Handcrafted</div>
+          <div class="about-val-desc">Traditional methods, not industrial assembly lines.</div>
+        </div>
+        <div class="about-val">
+          <div class="about-val-title">PAN India Delivery</div>
+          <div class="about-val-desc">Delivering freshness from Chennai to every corner of India.</div>
+        </div>
+        <div class="about-val">
+          <div class="about-val-title">International Reach</div>
+          <div class="about-val-desc">Reaching Indian hearts and food lovers worldwide.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="products-head reveal">
+    <div>
+      <div class="sec-label light">Our Products</div>
+      <h2 class="display light">Wholesome Goodness,<br><em>Every Category</em></h2>
+      <p class="products-head-sub">Crafted with nature's finest ingredients. No shortcuts, no compromises, just tradition on your plate.</p>
+    </div>
+    <div class="tab-group">
+      <button class="tab-btn active">All</button>
+      <button class="tab-btn">Snacks</button>
+      <button class="tab-btn">Sweets</button>
+      <button class="tab-btn">Baby Food</button>
+    </div>
+  </div>
+  <div class="products-grid stagger">
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsc7eeD59JopR9kJz518AxTcnsYrcTU0JhAg&s" alt="Multi-Millet Noodles" loading="lazy">
+        <div class="product-img-overlay"></div>
+        <div class="product-pill">Bestseller</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Healthy Snacks</div>
+        <div class="product-name">Multi-Millet Noodles</div>
+        <div class="product-desc">Nutritious noodles with a blend of finger millet, foxtail millet and more. Guilt-free daily meal.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_XRpdC6gJqwZzJYQt3GKZIgDHL-QqBeHdgQ&s" alt="Curry Leaves Rice Mix" loading="lazy">
+        <div class="product-img-overlay"></div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Rice Mixes</div>
+        <div class="product-name">Curry Leaves Rice Mix</div>
+        <div class="product-desc">Ready-to-cook blend with fragrant curry leaves and traditional spices. Quick, tasty, wholesome.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://gqkart.com/wp-content/uploads/2022/01/mudakathan-keerai-paruppu-podi-200g-235910_1024x-1-e1708421833717.jpg" alt="Mudakathan Rice Mix" loading="lazy">
+        <div class="product-img-overlay"></div>
+        <div class="product-pill">Herbal</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Rice Mixes</div>
+        <div class="product-name">Mudakathan Rice Mix</div>
+        <div class="product-desc">Herbal grain rice blend known for joint health benefits. Nutrient-rich and easy to prepare.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFrhVtIHE2WlouXBYiNgA03qnnxQXeTbX8eQ&s" alt="Pirandai Rice Mix" loading="lazy">
+        <div class="product-img-overlay"></div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Rice Mixes</div>
+        <div class="product-name">Pirandai Rice Mix</div>
+        <div class="product-desc">Traditional South Indian herbal blend using Pirandai — a culinary remedy and a delicacy.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlGxBTTPDs10PO_TW6cWrXcKkW1aJwZyMgULkrpX1aaA&s" alt="Peanut Chikki" loading="lazy">
+        <div class="product-img-overlay"></div>
+        <div class="product-pill">Classic</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Traditional Sweets</div>
+        <div class="product-name">Peanut Chikki</div>
+        <div class="product-desc">Crunchy peanut candy made with pure jaggery — a timeless Indian snack with no refined sugar.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://www.agraharammatrimony.com/shop/store/imageone/smallimage/0ellumittai.jpg" alt="Ellu Mittai" loading="lazy">
+        <div class="product-img-overlay"></div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Traditional Sweets</div>
+        <div class="product-name">Ellu Mittai</div>
+        <div class="product-desc">Sesame seed candy packed with iron and calcium. A nutritious energy bite the whole family loves.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://m.media-amazon.com/images/I/71a7F8WHG-S.jpg" alt="Ginger Chikki" loading="lazy">
+        <div class="product-img-overlay"></div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Traditional Sweets</div>
+        <div class="product-name">Ginger Chikki</div>
+        <div class="product-desc">A bold fusion of fresh ginger and jaggery in a crunchy chikki — warm, spicy, irresistible.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzc-vhYxJO9CP0ClKW70krcbma6t7aV_be8g&s" alt="White Sesame Chikki Gift Box" loading="lazy">
+        <div class="product-img-overlay"></div>
+        <div class="product-pill">Gift Box</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Gifting</div>
+        <div class="product-name">White Sesame Chikki Box</div>
+        <div class="product-desc">50-piece artisanal box — perfect for festivals, events, and corporate gifting.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://2.wlimg.com/product_images/bc-full/2025/5/14373010/raw-banana-powder-1747732929-8070207.jpeg" alt="Nendran Banana Powder" loading="lazy">
+        <div class="product-img-overlay"></div>
+        <div class="product-pill">Baby</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Baby &amp; Specialty</div>
+        <div class="product-name">Nendran Banana Powder</div>
+        <div class="product-desc">Natural banana powder for infants — easily digestible, no additives, pure nutrition from nature.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://img.freepik.com/premium-photo/patisa-soan-papdi-is-popular-indian-cube-shape-flakey-crispy-dessert-served-with-almonds-pistachio-plate-moody-background-selective-focus_466689-61951.jpg" alt="Peanut Soanpapdi" loading="lazy">
+        <div class="product-img-overlay"></div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Traditional Sweets</div>
+        <div class="product-name">Peanut Soanpapdi</div>
+        <div class="product-desc">The beloved flaky soanpapdi reimagined with roasted peanuts — crunchy, sweet, addictive.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDfzLrZA9ROz139qbd7liqC2ta229BMLoaUQ&s" alt="Ragi Malt Mix" loading="lazy">
+        <div class="product-img-overlay"></div>
+        <div class="product-pill">New</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Specialty Drinks</div>
+        <div class="product-name">Ragi Malt Mix</div>
+        <div class="product-desc">Finger millet and dry fruit blend — a traditional morning health drink rich in energy for all ages.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <img src="https://equisential.in/wp-content/uploads/2023/10/Untitled-design-7_11zon_11zon_11zon.webp" alt="Mixed Seeds Laddu" loading="lazy">
+        <div class="product-img-overlay"></div>
+        <div class="product-pill">New</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Healthy Snacks</div>
+        <div class="product-name">Mixed Seeds Laddu</div>
+        <div class="product-desc">Wholesome laddus crafted from chia, flax, pumpkin and sunflower seeds with natural jaggery.</div>
+        <div class="product-foot">
+          <div class="product-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <button class="product-order-btn">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section">
+  <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+    <div class="sec-label" style="justify-content:center">Browse by Category</div>
+    <h2 class="display">Something <em>Nourishing</em><br>for Everyone</h2>
+  </div>
+  <div class="cat-grid stagger">
+    <div class="cat-card reveal">
+      <img src="https://koreajoongangdaily.joins.com/data/photo/2024/08/10/def9d683-07b2-41b2-9cf2-d32f9e268f4e.jpg" alt="Rice and Grain Mixes" loading="lazy">
+      <div class="cat-overlay"></div>
+      <div class="cat-label"><strong>Rice &amp; Grain Mixes</strong><span>4 Products</span></div>
+    </div>
+    <div class="cat-card reveal">
+      <img src="https://th-i.thgim.com/public/life-and-style/food/article22420272.ece/alternates/FREE_1200/12MPTAMILNADUCANDY" alt="Traditional Indian Sweets" loading="lazy">
+      <div class="cat-overlay"></div>
+      <div class="cat-label"><strong>Traditional Sweets</strong><span>7 Products</span></div>
+    </div>
+    <div class="cat-card reveal">
+      <img src="https://i.gadgets360cdn.com/large/Best_Organic_Baby_Food_For_Your_Little_Baby_1509443807047.jpg" alt="Baby and Specialty Foods" loading="lazy">
+      <div class="cat-overlay"></div>
+      <div class="cat-label"><strong>Baby &amp; Specialty</strong><span>2 Products</span></div>
+    </div>
+    <div class="cat-card reveal">
+      <img src="https://images.jdmagicbox.com/quickquotes/listicle/listicle_1685681272620_x46uq_1040x500.jpg" alt="Healthy Snacks" loading="lazy">
+      <div class="cat-overlay"></div>
+      <div class="cat-label"><strong>Healthy Snacks</strong><span>3 Products</span></div>
+    </div>
+    <div class="cat-card reveal">
+      <img src="https://img.freepik.com/free-photo/smoothie-wooden-background_23-2147717587.jpg?semt=ais_hybrid&w=740&q=80" alt="Specialty Drinks" loading="lazy">
+      <div class="cat-overlay"></div>
+      <div class="cat-label"><strong>Specialty Drinks</strong><span>2 Products</span></div>
+    </div>
+    <div class="cat-card reveal">
+      <img src="https://5.imimg.com/data5/ECOM/Default/2024/10/456187448/BT/CD/FY/64569464/baklavabox01-10-24-108-500x500.jpg" alt="Combo Gift Packs" loading="lazy">
+      <div class="cat-overlay"></div>
+      <div class="cat-label"><strong>Combo Gift Packs</strong><span>5 Packs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="why">
+  <div class="why-intro reveal">
+    <div class="sec-label" style="justify-content:center">Why Choose Us</div>
+    <h2 class="display" style="text-align:center">Why Thousands <em>Trust</em><br>My Naren Foods</h2>
+    <p>We don't just make food — we craft experiences rooted in tradition, trust, and the purest ingredients nature has to offer.</p>
+  </div>
+  <div class="why-grid stagger">
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=112&h=112&fit=crop&auto=format&q=70" alt="Natural ingredients" loading="lazy">
+      </div>
+      <div class="why-num">01</div>
+      <div class="why-title">100% Natural Ingredients</div>
+      <div class="why-desc">Every ingredient is carefully sourced — whole grains, natural jaggery, and age-old herbs. No compromises, ever.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRscDbMK-5CMALbbu-cf5JVHiCHVmljqndkDg&s" alt="Handcrafted food" loading="lazy">
+      </div>
+      <div class="why-num">02</div>
+      <div class="why-title">Handcrafted with Love</div>
+      <div class="why-desc">No factory floors. Each product is crafted using traditional methods that preserve authentic taste and nutrition.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbols_atXj4AWnUlOXmydzTgYfwFqKcj_6dA&s" alt="Delivery across India" loading="lazy">
+      </div>
+      <div class="why-num">03</div>
+      <div class="why-title">Pan India &amp; International</div>
+      <div class="why-desc">From Tamil Nadu to Toronto — we deliver with care. Special packaging ensures freshness across any distance.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">
+        <img src="https://i0.wp.com/hellonimbly.com/wp-content/uploads/2023/08/BLOG-Social-Media_AUG.png?fit=1024%2C576&ssl=1" alt="Happy customers" loading="lazy">
+      </div>
+      <div class="why-num">04</div>
+      <div class="why-title">Loyal Customer Base</div>
+      <div class="why-desc">Thousands of repeat customers, consistent 5-star reviews, and a growing community of health-conscious food lovers.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">
+        <img src="https://img.freepik.com/premium-vector/gift-icon-design_861234-5724.jpg?semt=ais_user_personalization&w=740&q=80" alt="Gift packaging" loading="lazy">
+      </div>
+      <div class="why-num">05</div>
+      <div class="why-title">Perfect for Gifting</div>
+      <div class="why-desc">Bulk orders, combo packs, and festive boxes available. Thoughtful, healthy, and truly Indian gifts for every occasion.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">
+        <img src="https://pakoro.com/wp-content/uploads/2025/08/Explore-custom-packaging-options-for-powder-683x1024.webp" alt="Modern packaging" loading="lazy">
+      </div>
+      <div class="why-num">06</div>
+      <div class="why-title">Modern Packaging</div>
+      <div class="why-desc">Traditional recipes in contemporary, hygienic packaging. Shelf life maintained without any artificial preservatives.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BANNER -->
+<div class="feature-banner reveal">
+  <div class="feature-banner-bg">
+    <img src="https://png.pngtree.com/thumb_back/fh260/background/20240620/pngtree-indian-spices-and-herbs-mix-image_15908203.jpg" alt="Traditional Indian Cooking" loading="lazy">
+  </div>
+  <div class="feature-banner-inner">
+    <h2>Bulk Orders &amp; <em>Gifting</em><br>Made Simple</h2>
+    <p>Planning a wedding, festival, or corporate event? We offer custom combo packs, bulk orders with special pricing, and beautifully packaged gift boxes across all product lines.</p>
+    <a href="#contact" class="btn-primary">Get a Bulk Quote</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="testi-head reveal">
+    <div class="sec-label light" style="justify-content:center">Testimonials</div>
+    <h2 class="display light">What Our <em>Customers</em> Say</h2>
+  </div>
+  <div class="testi-grid stagger">
+    <div class="testi-card reveal">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="testi-quote">"The Multi-Millet Noodles are my kids' favourite now! So happy to have found a healthy yet truly tasty alternative. The quality is absolutely unmatched."</div>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=80&h=80&fit=crop&auto=format&q=70" alt="Priya" loading="lazy"></div>
+        <div>
+          <div class="testi-name">Priya Krishnamurthy</div>
+          <div class="testi-location">Chennai, Tamil Nadu</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="testi-quote">"Ordered the gift combo box for Diwali and everyone loved it. The Peanut Chikki and Ellu Mittai were gone in minutes. Authentic taste, beautiful packaging — highly recommend."</div>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&auto=format&q=70" alt="Rajesh" loading="lazy"></div>
+        <div>
+          <div class="testi-name">Rajesh Patel</div>
+          <div class="testi-location">Ahmedabad, Gujarat</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="testi-quote">"I'm in the UK and was craving authentic South Indian flavours. Naren Foods delivered internationally without any compromise on freshness. Truly outstanding service and product quality."</div>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&auto=format&q=70" alt="Deepa" loading="lazy"></div>
+        <div>
+          <div class="testi-name">Deepa Subramaniam</div>
+          <div class="testi-location">London, United Kingdom</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-wrap">
+    <div class="reveal-left">
+      <div class="sec-label">Get in Touch</div>
+      <h2 class="display">Order Today or<br><em>Ask Anything</em></h2>
+      <div class="contact-lede"><p>We're just a message away. Place your order, ask about custom bulk packs, request a product, or get delivery details — we love hearing from every customer.</p></div>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <img src="https://img.freepik.com/premium-vector/green-social-media-logo_197792-4213.jpg?semt=ais_user_personalization&w=740&q=80" alt="Call" loading="lazy">
+          </div>
+          <div>
+            <div class="contact-card-label">WhatsApp / Call</div>
+            <div class="contact-card-val">+91 97900 54868</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <img src="https://img.freepik.com/premium-vector/modern-badge-logo-instagram-icon_578229-124.jpg?semt=ais_user_personalization&w=740&q=80" alt="Instagram" loading="lazy">
+          </div>
+          <div>
+            <div class="contact-card-label">Instagram Direct Message</div>
+            <div class="contact-card-val">DM us on Instagram</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjjIN6brpjoGq6Vw_tsi4FT6-l8UBWWwnVbg&s" alt="Delivery" loading="lazy">
+          </div>
+          <div>
+            <div class="contact-card-label">Delivery Coverage</div>
+            <div class="contact-card-val">PAN India &amp; International</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal-right">
+      <h3>Send an Enquiry</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Name"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 xxxxx xxxxx"></div>
+      </div>
+      <div class="form-group"><label>City / Country</label><input type="text" placeholder="City"></div>
+      <div class="form-group">
+        <label>Product You're Interested In</label>
+        <select>
+          <option value="">Select a product...</option>
+          <optgroup label="Rice &amp; Grain Mixes">
+            <option>Multi-Millet Noodles</option>
+            <option>Curry Leaves Rice Mix</option>
+            <option>Mudakathan Rice Mix</option>
+            <option>Pirandai Rice Mix</option>
+          </optgroup>
+          <optgroup label="Traditional Sweets">
+            <option>Peanut Chikki</option>
+            <option>Ellu Mittai (Sesame Sweets)</option>
+            <option>Ginger Chikki</option>
+            <option>Crushed Peanut Chikki</option>
+            <option>White Sesame Chikki — 50 pcs Box</option>
+            <option>Peanut Soanpapdi</option>
+          </optgroup>
+          <optgroup label="Baby &amp; Specialty">
+            <option>Nendran Banana Powder</option>
+            <option>Ragi Malt Mix</option>
+          </optgroup>
+          <optgroup label="Gifting">
+            <option>Combo Pack / Gift Box</option>
+            <option>Bulk / Wholesale Order</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group"><label>Your Message</label><textarea placeholder="Tell us your requirements, quantity needed, delivery location, or any questions..."></textarea></div>
+      <button class="form-submit" id="submitBtn">Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo-img">
+        <img src="/logo.png" alt="My Naren Food Industries" loading="lazy">
+      </div>
+      <div class="footer-brand-n">My Naren Food Industries</div>
+      <div class="footer-brand-s">Pure &middot; Homemade &middot; Traditional</div>
+      <p class="footer-about">Bringing authentic Indian flavours and wholesome nutrition to homes across India and the world. No shortcuts — only the real thing, crafted with love.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="Instagram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+        <a href="#" class="footer-social" aria-label="Facebook">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        </a>
+        <a href="https://wa.me/919790054868" class="footer-social" aria-label="WhatsApp">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Multi-Millet Noodles</a></li>
+        <li><a href="#">Rice Mixes</a></li>
+        <li><a href="#">Peanut Chikki</a></li>
+        <li><a href="#">Ellu Mittai</a></li>
+        <li><a href="#">Nendran Banana Powder</a></li>
+        <li><a href="#">Combo Gift Packs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#why">Why Natural</a></li>
+        <li><a href="#contact">Bulk Orders</a></li>
+        <li><a href="#contact">Gifting</a></li>
+        <li><a href="#">Testimonials</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919790054868">+91 97900 54868</a></li>
+        <li><a href="#">Instagram DM</a></li>
+        <li><a href="https://wa.me/919790054868">WhatsApp Order</a></li>
+        <li><a href="#">Delivery Info</a></li>
+        <li><a href="#">Returns Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 My Naren Food Industries. Made with care in India.</p>
+    <p>Crafted for organic food lovers everywhere.</p>
+  </div>
+</footer>
+
+<script>
+/* Cursor */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function loop(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.product-card,.cat-card,.why-card,.about-val').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';cur.style.background='var(--green-light)';ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.opacity='.25'});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';cur.style.background='var(--green)';ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.5'});
+});
+
+/* Navbar */
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+
+/* Mobile menu */
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobile-nav').classList.add('open'));
+document.getElementById('mnav-close').addEventListener('click',()=>document.getElementById('mobile-nav').classList.remove('open'));
+document.querySelectorAll('#mobile-nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobile-nav').classList.remove('open')));
+
+/* Scroll reveal */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+/* Tabs */
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+
+/* Form */
+document.getElementById('submitBtn').addEventListener('click',function(){
+  const orig=this.textContent;
+  this.textContent='Enquiry Sent — We will contact you shortly.';
+  this.style.background='#3a8c49';this.disabled=true;
+  setTimeout(()=>{this.textContent=orig;this.style.background='';this.disabled=false},4000);
+});
+
+/* Product buttons */
+document.querySelectorAll('.product-order-btn').forEach(b=>b.addEventListener('click',function(){
+  const o=this.textContent;
+  this.textContent='Added';this.style.background='var(--green)';this.style.color='#fff';this.style.borderColor='var(--green)';
+  setTimeout(()=>{this.textContent=o;this.style.background=this.style.color=this.style.borderColor=''},2000);
+}));
+</script>
+</body>
+</html>
