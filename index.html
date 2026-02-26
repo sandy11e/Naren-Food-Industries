@@ -945,24 +945,24 @@ footer{background:var(--dark);padding:72px 8% 32px}
       <h2 class="display">Order Today or<br><em>Ask Anything</em></h2>
       <div class="contact-lede"><p>We're just a message away. Place your order, ask about custom bulk packs, request a product, or get delivery details — we love hearing from every customer.</p></div>
       <div class="contact-cards">
-        <div class="contact-card">
+        <a href="https://wa.me/919790054868" target="_blank" rel="noopener" class="contact-card">
           <div class="contact-card-icon">
-            <img src="https://img.freepik.com/premium-vector/green-social-media-logo_197792-4213.jpg?semt=ais_user_personalization&w=740&q=80" alt="Call" loading="lazy">
+            <img src="https://img.freepik.com/premium-vector/green-social-media-logo_197792-4213.jpg?semt=ais_user_personalization&w=740&q=80" alt="WhatsApp" loading="lazy">
           </div>
           <div>
             <div class="contact-card-label">WhatsApp / Call</div>
             <div class="contact-card-val">+91 97900 54868</div>
           </div>
-        </div>
-        <div class="contact-card">
+        </a>
+        <a href="https://www.instagram.com/mynarenfoodindustries/" target="_blank" rel="noopener" class="contact-card">
           <div class="contact-card-icon">
             <img src="https://img.freepik.com/premium-vector/modern-badge-logo-instagram-icon_578229-124.jpg?semt=ais_user_personalization&w=740&q=80" alt="Instagram" loading="lazy">
           </div>
           <div>
             <div class="contact-card-label">Instagram Direct Message</div>
-            <div class="contact-card-val">DM us on Instagram</div>
+            <div class="contact-card-val">@mynarenfoodindustries</div>
           </div>
-        </div>
+        </a>
         <div class="contact-card">
           <div class="contact-card-icon">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjjIN6brpjoGq6Vw_tsi4FT6-l8UBWWwnVbg&s" alt="Delivery" loading="lazy">
@@ -977,13 +977,13 @@ footer{background:var(--dark);padding:72px 8% 32px}
     <div class="contact-form reveal-right">
       <h3>Send an Enquiry</h3>
       <div class="form-row">
-        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Name"></div>
-        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 xxxxx xxxxx"></div>
+        <div class="form-group"><label>Your Name</label><input id="fname" type="text" placeholder="Name"></div>
+        <div class="form-group"><label>Phone Number</label><input id="fphone" type="tel" placeholder="+91 xxxxx xxxxx"></div>
       </div>
-      <div class="form-group"><label>City / Country</label><input type="text" placeholder="City"></div>
+      <div class="form-group"><label>City / Country</label><input id="fcity" type="text" placeholder="City"></div>
       <div class="form-group">
         <label>Product You're Interested In</label>
-        <select>
+        <select id="fproduct">
           <option value="">Select a product...</option>
           <optgroup label="Rice &amp; Grain Mixes">
             <option>Multi-Millet Noodles</option>
@@ -1009,7 +1009,7 @@ footer{background:var(--dark);padding:72px 8% 32px}
           </optgroup>
         </select>
       </div>
-      <div class="form-group"><label>Your Message</label><textarea placeholder="Tell us your requirements, quantity needed, delivery location, or any questions..."></textarea></div>
+      <div class="form-group"><label>Your Message</label><textarea id="fmsg" placeholder="Tell us your requirements, quantity needed, delivery location, or any questions..."></textarea></div>
       <button class="form-submit" id="submitBtn">Send Enquiry</button>
     </div>
   </div>
@@ -1026,7 +1026,7 @@ footer{background:var(--dark);padding:72px 8% 32px}
       <div class="footer-brand-s">Pure &middot; Homemade &middot; Traditional</div>
       <p class="footer-about">Bringing authentic Indian flavours and wholesome nutrition to homes across India and the world. No shortcuts — only the real thing, crafted with love.</p>
       <div class="footer-socials">
-        <a href="#" class="footer-social" aria-label="Instagram">
+        <a href="https://www.instagram.com/mynarenfoodindustries/" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         </a>
         <a href="#" class="footer-social" aria-label="Facebook">
@@ -1062,7 +1062,7 @@ footer{background:var(--dark);padding:72px 8% 32px}
       <h4>Contact</h4>
       <ul>
         <li><a href="tel:+919790054868">+91 97900 54868</a></li>
-        <li><a href="#">Instagram DM</a></li>
+        <li><a href="https://www.instagram.com/mynarenfoodindustries/" target="_blank" rel="noopener">Instagram DM</a></li>
         <li><a href="https://wa.me/919790054868">WhatsApp Order</a></li>
         <li><a href="#">Delivery Info</a></li>
         <li><a href="#">Returns Policy</a></li>
@@ -1104,12 +1104,25 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.
 /* Tabs */
 document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
 
-/* Form */
+/* Form — send to WhatsApp */
 document.getElementById('submitBtn').addEventListener('click',function(){
+  const name=document.getElementById('fname').value.trim();
+  const phone=document.getElementById('fphone').value.trim();
+  const city=document.getElementById('fcity').value.trim();
+  const product=document.getElementById('fproduct').value;
+  const msg=document.getElementById('fmsg').value.trim();
+  if(!name&&!phone&&!msg){alert('Please fill in at least your name or message.');return;}
+  let text='*New Enquiry from Website*%0A';
+  if(name)text+='*Name:* '+encodeURIComponent(name)+'%0A';
+  if(phone)text+='*Phone:* '+encodeURIComponent(phone)+'%0A';
+  if(city)text+='*City:* '+encodeURIComponent(city)+'%0A';
+  if(product)text+='*Product:* '+encodeURIComponent(product)+'%0A';
+  if(msg)text+='*Message:* '+encodeURIComponent(msg);
+  const url='https://wa.me/919790054868?text='+text;
+  window.open(url,'_blank');
   const orig=this.textContent;
-  this.textContent='Enquiry Sent — We will contact you shortly.';
-  this.style.background='#3a8c49';this.disabled=true;
-  setTimeout(()=>{this.textContent=orig;this.style.background='';this.disabled=false},4000);
+  this.textContent='Opening WhatsApp…';this.style.background='#3a8c49';this.disabled=true;
+  setTimeout(()=>{this.textContent=orig;this.style.background='';this.disabled=false},3000);
 });
 
 /* Product buttons */
