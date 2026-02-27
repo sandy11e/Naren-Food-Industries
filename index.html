@@ -39,10 +39,6 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text);over
 img{display:block;width:100%;object-fit:cover}
 a{text-decoration:none;color:inherit}
 button{font-family:var(--font-body);border:none;cursor:pointer}
-body{cursor:none}
-#cursor{width:10px;height:10px;background:var(--green);border-radius:50%;position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);transition:transform .12s var(--ease),background .2s;mix-blend-mode:multiply}
-#cursor-ring{width:38px;height:38px;border:1.5px solid var(--green);border-radius:50%;position:fixed;z-index:9998;pointer-events:none;transform:translate(-50%,-50%);opacity:.5}
-@media(hover:none){#cursor,#cursor-ring{display:none}body,button,a{cursor:auto}}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--green-light);border-radius:10px}
 
 /* NAV */
@@ -435,9 +431,6 @@ footer{background:var(--dark);padding:72px 8% 32px}
 </style>
 </head>
 <body>
-
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
 
 <!-- MOBILE NAV -->
 <div id="mobile-nav">
@@ -1076,16 +1069,6 @@ footer{background:var(--dark);padding:72px 8% 32px}
 </footer>
 
 <script>
-/* Cursor */
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function loop(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('a,button,.product-card,.cat-card,.why-card,.about-val').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';cur.style.background='var(--green-light)';ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.opacity='.25'});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';cur.style.background='var(--green)';ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.5'});
-});
-
 /* Navbar */
 const nav=document.getElementById('navbar');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
